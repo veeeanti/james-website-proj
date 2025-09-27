@@ -1,0 +1,43 @@
+/* Simple responsive styles for Summit Campers */
+:root{
+  --brand:#0b3d91; /* navy blue */
+  --muted:#666;
+  --bg:#f7f7f8;
+  --card:#fff;
+  --accent:#b31b1b; /* american red */
+  --radius:10px;
+  --max-width:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#222; background:var(--bg);}
+.container{max-width:var(--max-width); margin:0 auto; padding:18px}
+.header-inner{display:flex; align-items:center; justify-content:space-between}
+.brand{color:var(--brand); margin:0; font-size:1.4rem}
+.nav{display:flex; gap:10px; align-items:center}
+.search{padding:8px 10px; border-radius:8px; border:1px solid #ddd; min-width:220px}
+.cart-btn{background:var(--brand); color:#fff; border:none; padding:8px 10px; border-radius:8px; cursor:pointer}
+.hero{background:linear-gradient(90deg, rgba(11,110,79,0.06), rgba(255,122,24,0.04)); padding:40px 0; margin-bottom:16px}
+.hero h2{margin:0 0 8px}
+.btn{display:inline-block; background:var(--accent); color:#fff; padding:10px 14px; border-radius:8px; text-decoration:none}
+.products-section{padding-bottom:40px}
+.products-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px}
+.card{background:var(--card); border-radius:var(--radius); padding:12px; box-shadow:0 6px 18px rgba(15,15,15,0.06)}
+.card img{width:100%; height:160px; object-fit:cover; border-radius:8px}
+.card .title{font-weight:600; margin:8px 0}
+.card .meta{color:var(--muted); font-size:0.9rem}
+.card .price{font-weight:700; margin-top:6px}
+.card .actions{display:flex; gap:8px; margin-top:10px}
+.btn-ghost{background:transparent; border:1px solid #ddd; padding:8px 10px; border-radius:8px; cursor:pointer}
+.filters{display:flex; justify-content:flex-end; margin-bottom:12px}
+.no-results{padding:30px; text-align:center; color:var(--muted)}
+.site-footer{background:#fff; padding:20px 0; margin-top:30px; border-top:1px solid #eee}
+.footer-inner{display:flex; gap:40px}
+.small{font-size:0.9rem; color:var(--muted); padding:8px 0}
+.modal{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(10,10,10,0.4); visibility:hidden; opacity:0; transition:opacity .18s}
+.modal[aria-hidden="false"]{visibility:visible; opacity:1}
+.modal-content{background:var(--card); padding:20px; border-radius:12px; max-width:760px; width:92%; max-height:85vh; overflow:auto}
+.modal-close{background:transparent; border:none; font-size:22px; position:absolute; right:18px; top:18px; cursor:pointer}
+@media (max-width:640px){
+  .header-inner{flex-direction:column; gap:10px; align-items:flex-start}
+  .footer-inner{flex-direction:column}
+}

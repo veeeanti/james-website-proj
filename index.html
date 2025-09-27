@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>All American Campers — Quality Campers for Every Adventure</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="description" content="Shop premium campers — travel trailers, pop-ups, and off-road rigs. Find your next home-on-wheels at Summit Campers." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">All American Campers</h1>
+      <nav class="nav">
+        <input id="search" class="search" placeholder="Search campers by name or feature..." aria-label="Search campers">
+        <select id="filter-type" aria-label="Filter by type">
+          <option value="all">All Types</option>
+          <option value="travel">Travel Trailer</option>
+          <option value="pop-up">Pop-up</option>
+          <option value="off-road">Off-Road</option>
+        </select>
+        <button id="cart-btn" class="cart-btn" aria-label="View cart">Cart (<span id="cart-count">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Find your perfect camper and get back to the wild.</h2>
+  <p>Durable builds, smart layouts, and financing options available. Browse our curated selection.</p>
+        <a href="#products" class="btn">Shop Campers</a>
+      </div>
+    </section>
+
+    <section id="products" class="container products-section">
+      <div class="filters">
+        <label>
+          Sort by:
+          <select id="sort-by">
+            <option value="recommended">Recommended</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="length-asc">Length: Short → Long</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="products-grid" class="products-grid" aria-live="polite">
+        <!-- products injected here -->
+      </div>
+
+      <div id="no-results" class="no-results" hidden>
+        No campers match your search. Try different filters.
+      </div>
+    </section>
+
+    <!-- product modal -->
+    <div id="product-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <h3>Contact</h3>
+        <p>Email: sales@allamericancampers.example</p>
+        <p>Phone: (555) 123-4567</p>
+      </div>
+      <div>
+        <h3>Visit</h3>
+        <p>456 Freedom Road<br>Liberty Town, ST 00000</p>
+      </div>
+    </div>
+    <div class="container small">© <span id="year"></span> All American Campers — All rights reserved.</div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
