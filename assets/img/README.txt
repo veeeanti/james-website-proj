@@ -1,4 +1,14 @@
 {
+  "id": "svc-0",
+  "name": "Test",
+  "type": "test",
+  "price": "n/a",
+  "image": "",
+  "short": "This is a test for the final product, these do not apply and will likely not be what will be offered.",
+  "description": "This is a test for the final product, these do not apply and will likely not be what will be offered.",
+  "features": ""
+}
+{
   "id": "svc-101",
   "name": "Home Cleaning",
   "type": "cleaning",
