@@ -1,23 +1,23 @@
-// Lightweight product UI for Summit Campers
-const PRODUCTS_URL = 'assets/data/products.json'
-let products = []
+// Lightweight service UI for All American Services
+const SERVICES_URL = 'assets/data/products.json'
+let services = []
 let cart = {}
 
 function $(sel){return document.querySelector(sel)}
 function formatPrice(n){return "$" + n.toLocaleString()}
 
-async function loadProducts(){
+async function loadServices(){
   try{
-    const res = await fetch(PRODUCTS_URL)
-    products = await res.json()
-    renderProducts(products)
+    const res = await fetch(SERVICES_URL)
+    services = await res.json()
+    renderServices(services)
   }catch(e){
-    document.getElementById('products-grid').innerText = 'Failed to load products.'
+    document.getElementById('products-grid').innerText = 'Failed to load services.'
     console.error(e)
   }
 }
 
-function renderProducts(list){
+function renderServices(list){
   const grid = $('#products-grid')
   grid.innerHTML = ''
   if(!list.length){
@@ -25,17 +25,17 @@ function renderProducts(list){
     return
   }
   $('#no-results').hidden = true
-  list.forEach(p => {
+  list.forEach(s => {
     const card = document.createElement('article')
     card.className = 'card'
     card.innerHTML = `
-      <img alt="${p.name}" src="${p.image}">
-      <div class="title">${p.name}</div>
-      <div class="meta">${p.short} • ${p.length_ft} ft</div>
-      <div class="price">${formatPrice(p.price)}</div>
+      <img alt="${s.name}" src="${s.image}">
+      <div class="title">${s.name}</div>
+      <div class="meta">${s.short}</div>
+      <div class="price">${formatPrice(s.price)}</div>
       <div class="actions">
-        <button class="btn-ghost" data-id="${p.id}" data-action="details">Details</button>
-        <button class="cart-btn" data-id="${p.id}" data-action="add">Add to Cart</button>
+        <button class="btn-ghost" data-id="${s.id}" data-action="details">Details</button>
+        <button class="cart-btn" data-id="${s.id}" data-action="add">Add to Cart</button>
       </div>
     `
     grid.appendChild(card)
@@ -46,37 +46,35 @@ function applyFilters(){
   const q = $('#search').value.trim().toLowerCase()
   const type = $('#filter-type').value
   const sort = $('#sort-by').value
-  let list = products.filter(p => {
-    if(type !== 'all' && p.type !== type) return false
+  let list = services.filter(s => {
+    if(type !== 'all' && s.type !== type) return false
     if(!q) return true
-    return (p.name + ' ' + p.short + ' ' + p.features.join(' ')).toLowerCase().includes(q)
+    return (s.name + ' ' + s.short + ' ' + s.features.join(' ')).toLowerCase().includes(q)
   })
 
   if(sort === 'price-asc') list.sort((a,b)=>a.price-b.price)
   if(sort === 'price-desc') list.sort((a,b)=>b.price-a.price)
-  if(sort === 'length-asc') list.sort((a,b)=>a.length_ft - b.length_ft)
 
-  renderProducts(list)
+  renderServices(list)
 }
 
-function showProductDetails(id){
-  const p = products.find(x=>x.id===id)
-  if(!p) return
+function showServiceDetails(id){
+  const s = services.find(x=>x.id===id)
+  if(!s) return
   const modal = $('#product-modal')
   const body = $('#modal-body')
   body.innerHTML = `
     <div style="display:flex; gap:16px; flex-wrap:wrap">
       <div style="flex:1 1 280px">
-        <img src="${p.image}" alt="${p.name}" style="width:100%; height:260px; object-fit:cover; border-radius:8px">
+        <img src="${s.image}" alt="${s.name}" style="width:100%; height:260px; object-fit:cover; border-radius:8px">
       </div>
       <div style="flex:1 1 260px">
-        <h2>${p.name}</h2>
-        <p class="meta">${p.length_ft} ft • Sleeps ${p.sleep}</p>
-        <p>${p.description}</p>
-        <ul>${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>
-        <div class="price">${formatPrice(p.price)}</div>
+        <h2>${s.name}</h2>
+        <p>${s.description}</p>
+        <ul>${s.features.map(f=>`<li>${f}</li>`).join('')}</ul>
+        <div class="price">${formatPrice(s.price)}</div>
         <div style="margin-top:10px">
-          <button class="cart-btn" data-action="add" data-id="${p.id}">Add to Cart</button>
+          <button class="cart-btn" data-action="add" data-id="${s.id}">Add to Cart</button>
           <button class="btn-ghost" id="modal-inquire">Inquire</button>
         </div>
       </div>
@@ -115,14 +113,14 @@ function viewCart(){
   const body = $('#modal-body')
   const items = Object.entries(cart)
   if(items.length===0){
-    body.innerHTML = `<h2>Your Cart is empty</h2><p>Browse campers and add the ones you love.</p>`
+    body.innerHTML = `<h2>Your Cart is empty</h2><p>Browse services and add the ones you need.</p>`
   } else {
     let total = 0
     const rows = items.map(([id,qty])=>{
-      const p = products.find(x=>x.id===id) || {name:id, price:0}
-      const line = p.price * qty
+      const s = services.find(x=>x.id===id) || {name:id, price:0}
+      const line = s.price * qty
       total += line
-      return `<div style="display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid #eee"><div><strong>${p.name}</strong><div style="color:#666">Qty: ${qty}</div></div><div>${formatPrice(line)}</div></div>`
+      return `<div style="display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid #eee"><div><strong>${s.name}</strong><div style="color:#666">Qty: ${qty}</div></div><div>${formatPrice(line)}</div></div>`
     }).join('')
     body.innerHTML = `<h2>Your Cart</h2>${rows}<div style="text-align:right; margin-top:12px"><strong>Total: ${formatPrice(total)}</strong></div><div style="margin-top:12px"><button id="checkout-btn" class="cart-btn">Checkout</button> <button id="clear-cart" class="btn-ghost">Clear Cart</button></div>`
   }
@@ -133,7 +131,7 @@ function clearCart(){ cart = {}; saveCart(); hideModal(); }
 
 function init(){
   loadCart()
-  loadProducts()
+  loadServices()
   $('#year').innerText = new Date().getFullYear()
 
   $('#search').addEventListener('input', applyFilters)
@@ -145,7 +143,7 @@ function init(){
     if(btn){
       const action = btn.dataset.action
       const id = btn.dataset.id
-      if(action === 'details') showProductDetails(id)
+      if(action === 'details') showServiceDetails(id)
       if(action === 'add') { addToCart(id); alert('Added to cart') }
     }
     if(e.target.id === 'cart-btn' || e.target.closest('#cart-btn')) {
@@ -159,7 +157,7 @@ function init(){
   document.body.addEventListener('click', e=>{
     if(e.target.id === 'clear-cart') clearCart()
     if(e.target.id === 'checkout-btn'){
-        alert('Checkout not implemented in this demo. Contact sales@allamericancampers.example')
+        alert('Checkout not implemented in this demo. Contact info@allamericanservices.example')
     }
   })
 }

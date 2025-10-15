@@ -1,38 +1,32 @@
 [
   {
-    "id": "aac-101",
-    "name": "All American Voyager 18",
-    "type": "travel",
-    "length_ft": 18,
-    "price": 15999,
-    "sleep": 4,
-    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abc",
-    "short": "Compact travel trailer with smart layout",
-    "description": "The All American Voyager 18 is a lightweight travel trailer optimized for couples and small families. It features an efficient kitchenette, wet bath, and convertible dinette.",
-    "features": ["Lightweight chassis","Convertible dinette","Panoramic windows"]
+    "id": "svc-101",
+    "name": "Home Cleaning",
+    "type": "cleaning",
+    "price": 120,
+    "image": "assets/img/cleaning.jpg",
+    "short": "Thorough cleaning for homes and apartments",
+    "description": "Our professional team provides deep cleaning for all living spaces, including kitchens, bathrooms, and bedrooms.",
+    "features": ["Eco-friendly products","Flexible scheduling","Experienced staff"]
   },
   {
-    "id": "aac-220",
-    "name": "Patriot Pop 220",
-    "type": "pop-up",
-    "length_ft": 14,
-    "price": 7999,
-    "sleep": 6,
-    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=def",
-    "short": "Affordable pop-up with roomy interior",
-    "description": "The Patriot Pop 220 is an easy-tow pop-up that expands into a comfortable sleeping area and has a simple galley for weekend trips.",
-    "features": ["Easy tow","Lightweight","Large storage"]
+    "id": "svc-220",
+    "name": "Appliance Repair",
+    "type": "repair",
+    "price": 80,
+    "image": "assets/img/repair.jpg",
+    "short": "Fast and reliable appliance repair",
+    "description": "We fix refrigerators, ovens, washers, dryers, and more. Same-day service available in most areas.",
+    "features": ["Certified technicians","Warranty included","All major brands"]
   },
   {
-    "id": "aac-xr40",
-    "name": "All American X-Road 40",
-    "type": "off-road",
-    "length_ft": 22,
-    "price": 34999,
-    "sleep": 4,
-    "image": "https://images.unsplash.com/photo-1453847668862-487637052f8a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghi",
-    "short": "Rugged off-road camper for serious adventurers",
-    "description": "Built for off-grid travel, the X-Road 40 includes reinforced suspension, solar prewire, and water storage for extended stays.",
-    "features": ["Reinforced suspension","Solar ready","High clearance"]
+    "id": "svc-301",
+    "name": "Business Consulting",
+    "type": "consulting",
+    "price": 250,
+    "image": "assets/img/consulting.jpg",
+    "short": "Expert advice for small businesses",
+    "description": "Get strategic guidance on marketing, operations, and growth from our experienced consultants.",
+    "features": ["Custom solutions","Industry expertise","Confidential support"]
   }
 ]
